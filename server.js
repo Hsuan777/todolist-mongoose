@@ -40,9 +40,13 @@ const requestListener = async (req, res) => {
     await Todo.deleteMany({});
     successHandle(res, '刪除所有資料成功');
   } else if (req.url.startsWith('/todos/') && req.method === 'DELETE') {
-    const toDoId = req.url.split('/').pop();
-    await Todo.findByIdAndDelete(toDoId);
-    successHandle(res, '資料刪除成功');
+    try {
+      const toDoId = req.url.split('/').pop();
+      await Todo.findByIdAndDelete(toDoId);
+      successHandle(res, '資料刪除成功');
+    } catch {
+      errorHandle(res, '資料刪除失敗');
+    }
   } else if (req.url.startsWith('/todos/') && req.method === 'PATCH') {
     req.on('end', async () => {
       try {
