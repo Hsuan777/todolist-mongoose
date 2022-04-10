@@ -12,5 +12,8 @@
   "dependencies": {
     "dotenv": "^16.0.0",
     "mongoose": "^6.2.10"
+  },
+  "engines": {
+    "node": "v16.x"
   }
 }

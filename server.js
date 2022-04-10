@@ -8,7 +8,7 @@ const Todo = require('./models/todo');
 const successHandle = require('./handles/successHanlde');
 const errorHandle = require('./handles/errorHanlde');
 
-const DB = process.env.DATABASE
+const DB = process.env.DATABASE.replace('<password>', process.env.DATABASE_PASSWORD)
 mongoose.connect(DB).then(() => {
   console.log('資料庫連線成功');
 })
